@@ -3870,8 +3870,15 @@ public:
     {
         LIMITED_METHOD_CONTRACT;
 
-        // Shadow Stacks and CET are fully disabled to allow using runtime on Windows 10.
+#if defined(TARGET_AMD64)
+        // The SSP is null when CET shadow stacks are not enabled. On processors that don't support shadow stacks, this is a
+        // no-op and the intrinsic returns 0. CET shadow stacks are enabled or disabled for all threads, so the result is the
+        // same from any thread.
+        return _rdsspq() != 0;
+#else
+        // When implementing AreShadowStacksEnabled() on other architectures, review all the places where this is used.
         return false;
+#endif
     }
 #endif
 
