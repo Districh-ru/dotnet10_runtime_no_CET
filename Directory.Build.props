@@ -16,7 +16,7 @@
          Explicitly setting it to false ensures projects are built in the corresponding configuration both in VS and on the command line. -->
     <ShouldUnsetParentConfigurationAndPlatform>false</ShouldUnsetParentConfigurationAndPlatform>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <NuGetAudit>false</NuGetAudit>
   </PropertyGroup>
@@ -108,6 +108,10 @@
     <HostConfiguration Condition="'$(HostConfiguration)' == ''">$(Configuration)</HostConfiguration>
     <TasksConfiguration Condition="'$(TasksConfiguration)' == ''">$(Configuration)</TasksConfiguration>
     <ToolsConfiguration Condition="'$(ToolsConfiguration)' == ''">$(Configuration)</ToolsConfiguration>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <PropertyGroup>
