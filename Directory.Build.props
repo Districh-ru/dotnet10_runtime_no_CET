@@ -16,6 +16,10 @@
          Explicitly setting it to false ensures projects are built in the corresponding configuration both in VS and on the command line. -->
     <ShouldUnsetParentConfigurationAndPlatform>false</ShouldUnsetParentConfigurationAndPlatform>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
 
   <!-- We don't have RepoRoot or RepositoryEngineeringDir available at this point -->
   <Import Project="$(MSBuildThisFileDirectory)/eng/OSArch.props" />
